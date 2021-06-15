@@ -2,6 +2,12 @@ const express = require('express');
 const products = require('./productList/products');
 const app = express();
 
+//health
+
+app.get('/health',(req,res)=>{
+  res .send('git checking......');
+});
+
 app.get('/', (req, res) => {
   res.send('nest api is running........');
 });
