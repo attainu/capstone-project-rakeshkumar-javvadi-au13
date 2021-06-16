@@ -1,21 +1,24 @@
 import mongoose from 'mongoose';
 
-const reviewsSchema = mongoose.Schema({
+const reviewsSchema = mongoose.Schema(
+  {
     name: {
-        type:String,
-        required: true
+      type: String,
+      required: true,
     },
-    rating:{
-        type:Number,
-        required:true
-    }
-    comment:{
-        type:String,
-        required:true
-    }
-    },{
-        timestamps:true,
-    })
+    rating: {
+      type: Number,
+      required: true,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 const productSchema = mongoose.Schema(
   {
     user: {
@@ -30,8 +33,8 @@ const productSchema = mongoose.Schema(
     image: {
       type: String,
       required: true,
-    }
-    brand : {
+    },
+    brand: {
       type: String,
       required: true,
     },
@@ -41,36 +44,36 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     description: {
-        type: String,
-        required: true,
-      },
-    reviews:[reviewsSchema],
-    rating: {
-        type: Number,
-        required: true,
-        default:0
+      type: String,
+      required: true,
     },
-    numReviews: { 
-        type: Number,
-        required: true,
-        default:0
-      },
-    price:{
-        type: Number,
-        required: true,
-        default:0
-    }
-    countInStock:{
-        type: Number,
-        required: true,
-        default:0
-    }
+    reviews: [reviewsSchema],
+    rating: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    numReviews: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    countInStock: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Product= mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 export default Product;

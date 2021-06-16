@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Lorem Ipsum is simply dummy text of the printing',
     image: '/images/pexels1.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 19,
   },
   {
-    _id: '2',
     name: 'Lorem Ipsum is simply dummy text of the printing',
     image: '/images/pexels2.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: '3',
     name: 'Lorem Ipsum is simply dummy text of the printing',
     image: '/images/pexels3.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: '4',
     name: 'Lorem Ipsum is simply dummy text of the printing',
     image: '/images/pexels4.jpg',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 6,
   },
   {
-    _id: '5',
     name: 'Lorem Ipsum is simply dummy text of the printing',
     image: '/images/pexels5.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 15,
   },
   {
-    _id: '6',
     name: 'Lorem Ipsum is simply dummy text of the printing',
     image: '/images/pexels6.jpg',
     description:
@@ -79,4 +73,5 @@ const products = [
   },
 ];
 
-module.exports = products;
+// module.exports = products;
+export default products;
