@@ -6,16 +6,18 @@ import Footer from './components/Footer';
 import HomeDisplay from './Displays/HomeDisplay';
 import ProductDisplay from './Displays/ProductDisplay';
 import CartDisplay from './Displays/CartDisplay';
-
+import loginDisplay from './Displays/loginDisplay';
 function App() {
   return (
     <Router>
       <Header />
       <main className='py-3'>
         <Container>
-          <Route path='/' component={HomeDisplay} exact />
+          <Route path='/login' component={loginDisplay} />
           <Route path='/product/:id' component={ProductDisplay} />
           <Route path='/cart/:id?' component={CartDisplay} />
+          <Route path='/' component={HomeDisplay} exact />
+          
         </Container>
       </main>
       <Footer />
