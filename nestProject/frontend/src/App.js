@@ -11,13 +11,15 @@ import RegisterDisplay from './Displays/RegisterDisplay';
 import ProfileDisplay from './Displays/ProfileDisplay';
 import ShippingDisplay from './Displays/ShippingDisplay';
 import PaymentDisplay from './Displays/PaymentDisplay';
-import PlaceOrderDisplay from './Displays/PlaceOrderDisplay;
+import PlaceOrderDisplay from './Displays/PlaceOrderDisplay';
+import OrderDisplay from './Displays/OrderDisplay';
 function App() {
   return (
     <Router>
       <Header />
       <main className='py-3'>
         <Container>
+          <Route path='/order/:id' component={OrderDisplay} />
           <Route path='/shipping' component={ShippingDisplay} />
           <Route path='/payment' component={PaymentDisplay} />
           <Route path='/placeorder' component={PlaceOrderDisplay} />
