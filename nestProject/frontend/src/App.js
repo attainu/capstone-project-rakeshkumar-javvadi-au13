@@ -13,6 +13,8 @@ import ShippingDisplay from './Displays/ShippingDisplay';
 import PaymentDisplay from './Displays/PaymentDisplay';
 import PlaceOrderDisplay from './Displays/PlaceOrderDisplay';
 import OrderDisplay from './Displays/OrderDisplay';
+import UserListDisplay from './Displays/UserListDisplay';
+
 function App() {
   return (
     <Router>
@@ -28,6 +30,7 @@ function App() {
           <Route path='/profile' component={ProfileDisplay} />
           <Route path='/product/:id' component={ProductDisplay} />
           <Route path='/cart/:id?' component={CartDisplay} />
+          <Route path='/admin/userlist' component={UserListDisplay} />
           <Route path='/' component={HomeDisplay} exact />
         </Container>
       </main>
