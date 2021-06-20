@@ -15,7 +15,8 @@ import PlaceOrderDisplay from './Displays/PlaceOrderDisplay';
 import OrderDisplay from './Displays/OrderDisplay';
 import UserListDisplay from './Displays/UserListDisplay';
 import UserEditDisplay from './Displays/UserEditDisplay';
-import ProductListDisplay from './screens/ProductListDisplay';
+import ProductListDisplay from './Displays/ProductListDisplay';
+import ProductEditDisplay from './Displays/ProductEditDisplay';
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
           <Route path='/admin/userlist' component={UserListDisplay} />
           <Route path='/admin/user/:id/edit' component={UserEditDisplay} />
           <Route path='/admin/productlist' component={ProductListDisplay} />
+          <Route
+            path='/admin/product/:id/edit'
+            component={ProductEditDisplay}
+          />
           <Route path='/' component={HomeDisplay} exact />
         </Container>
       </main>
