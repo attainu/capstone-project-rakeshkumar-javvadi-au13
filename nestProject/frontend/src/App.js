@@ -17,8 +17,8 @@ import UserListDisplay from './Displays/UserListDisplay';
 import UserEditDisplay from './Displays/UserEditDisplay';
 import ProductListDisplay from './Displays/ProductListDisplay';
 import ProductEditDisplay from './Displays/ProductEditDisplay';
-
-function App() {
+import OrderListDisplay from './Displays/OrderListDisplay';
+const App = () => {
   return (
     <Router>
       <Header />
@@ -35,10 +35,27 @@ function App() {
           <Route path='/cart/:id?' component={CartDisplay} />
           <Route path='/admin/userlist' component={UserListDisplay} />
           <Route path='/admin/user/:id/edit' component={UserEditDisplay} />
-          <Route path='/admin/productlist' component={ProductListDisplay} />
+          <Route
+            path='/admin/productlist'
+            component={ProductListDisplay}
+            exact
+          />
+          <Route
+            path='/admin/productlist/:pageNumber'
+            component={ProductListDisplay}
+            exact
+          />
           <Route
             path='/admin/product/:id/edit'
             component={ProductEditDisplay}
+          />
+          <Route path='/admin/orderlist' component={OrderListDisplay} />
+          <Route path='/search/:keyword' component={HomeDisplay} exact />
+          <Route path='/page/:pageNumber' component={HomeDisplay} exact />
+          <Route
+            path='/search/:keyword/page/:pageNumber'
+            component={HomeDisplay}
+            exact
           />
           <Route path='/' component={HomeDisplay} exact />
         </Container>
@@ -46,6 +63,6 @@ function App() {
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;

@@ -5,10 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
-// eslint-disable-next-line
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
-
 
 const UserEditDisplay = ({ match, history }) => {
   const userId = match.params.id;

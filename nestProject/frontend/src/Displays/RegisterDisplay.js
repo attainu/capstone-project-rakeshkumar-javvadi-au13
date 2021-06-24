@@ -7,37 +7,35 @@ import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { register } from '../actions/userActions';
 
-const RegisterDisplay = ({
-    location, history
-}) => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [message, setMessage] = useState(null)
+const RegisterDisplay = ({ location, history }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState(null);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const userRegister = useSelector((state) => state.userRegister)
-  const { loading, error, userInfo } = userRegister
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+      history.push(redirect);
     }
-  }, [history, userInfo, redirect])
+  }, [history, userInfo, redirect]);
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match')
+      setMessage('Passwords do not match');
     } else {
-      dispatch(register(name, email, password))
-    }  
-};
-return (
+      dispatch(register(name, email, password));
+    }
+  };
+  return (
     <FormContainer>
       <h1>Sign Up</h1>
       {message && <Message variant='danger'>{message}</Message>}
@@ -64,7 +62,7 @@ return (
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='password'>
-          <Form.Label>Password Address</Form.Label>
+          <Form.Label>Password </Form.Label>
           <Form.Control
             type='password'
             placeholder='Enter password'
@@ -97,7 +95,7 @@ return (
         </Col>
       </Row>
     </FormContainer>
-  )
-}
+  );
+};
 
- export default RegisterDisplay;
+export default RegisterDisplay;
