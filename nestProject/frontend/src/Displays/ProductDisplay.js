@@ -94,7 +94,7 @@ const ProductDisplay = ({ history, match }) => {
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Price:<i class='fas fa-rupee-sign'></i>
+                  Price:$
                   {product.price}
                 </ListGroup.Item>
                 <ListGroup.Item>

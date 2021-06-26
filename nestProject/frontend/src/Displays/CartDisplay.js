@@ -115,6 +115,7 @@ const CartDisplay = ({ match, location, history }) => {
         </Card>
       </Col>
     </Row>
-  )}
+  );
+};
 
 export default CartDisplay;
