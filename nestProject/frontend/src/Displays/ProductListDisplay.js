@@ -14,6 +14,7 @@ import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 const ProductListDisplay = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
+
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
@@ -40,9 +41,10 @@ const ProductListDisplay = ({ history, match }) => {
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
+    if (!userInfo || !userInfo.isAdmin) {
       history.push('/login');
     }
+
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`);
     } else {

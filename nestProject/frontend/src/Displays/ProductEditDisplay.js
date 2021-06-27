@@ -1,7 +1,7 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -11,7 +11,7 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
 const ProductEditDisplay = ({ match, history }) => {
   const productId = match.params.id;
-  const [uploading, setUploading] = useState(false);
+
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
@@ -19,18 +19,20 @@ const ProductEditDisplay = ({ match, history }) => {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
-
+  const [uploading, setUploading] = useState(false);
 
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
     loading: loadingUpdate,
     error: errorUpdate,
     success: successUpdate,
   } = productUpdate;
+
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -44,7 +46,7 @@ const ProductEditDisplay = ({ match, history }) => {
         setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
-        setCountInStock(product.countInSock);
+        setCountInStock(product.countInStock);
         setDescription(product.description);
       }
     }
@@ -76,18 +78,19 @@ const ProductEditDisplay = ({ match, history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-        updateProduct({
-          _id: productId,
-          name,
-          price,
-          image,
-          brand,
-          category,
-          description,
-          countInStock,
-        })
-      );
+      updateProduct({
+        _id: productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        description,
+        countInStock,
+      })
+    );
   };
+
   return (
     <>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
@@ -131,6 +134,13 @@ const ProductEditDisplay = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              <Form.File
+                id='image-file'
+                label='Choose File'
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='brand'>
@@ -141,13 +151,6 @@ const ProductEditDisplay = ({ match, history }) => {
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
-              <Form.File
-                id='image-file'
-                label='Choose File'
-                custom
-                onChange={uploadFileHandler}
-              ></Form.File>
-              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='countInStock'>
