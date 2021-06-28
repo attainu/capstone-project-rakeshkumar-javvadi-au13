@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactStars from 'react-rating-stars-component';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -62,6 +63,9 @@ const ProductDisplay = ({ history, match }) => {
         comment,
       })
     );
+  };
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
   };
   return (
     <>
@@ -187,18 +191,16 @@ const ProductDisplay = ({ history, match }) => {
                     <Form onSubmit={submitHandler}>
                       <Form.Group controlId='rating'>
                         <Form.Label>Rating</Form.Label>
-                        <Form.Control
-                          as='select'
-                          value={rating}
-                          onChange={(e) => setRating(e.target.value)}
-                        >
-                          <option value=''>Select...</option>
-                          <option value='1'>1 - Poor</option>
-                          <option value='2'>2 - Fair</option>
-                          <option value='3'>3 - Good</option>
-                          <option value='4'>4 - Very Good</option>
-                          <option value='5'>5 - Excellent</option>
-                        </Form.Control>
+                        <ReactStars
+                          count={5}
+                          onChange={ratingChanged}
+                          size={24}
+                          isHalf={true}
+                          emptyIcon={<i className='far fa-star'></i>}
+                          halfIcon={<i className='fa fa-star-half-alt'></i>}
+                          fullIcon={<i className='fa fa-star'></i>}
+                          activeColor='#ffd700'
+                        />
                       </Form.Group>
                       <Form.Group controlId='comment'>
                         <Form.Label>Comment</Form.Label>
