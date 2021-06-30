@@ -69,6 +69,7 @@ const ShippingDisplay = ({ history }) => {
             required
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
+          <br />
         </Form.Group>
 
         <Button type='submit' variant='primary'>
